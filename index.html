@@ -3,134 +3,43 @@
 	<script src=src/main.app.js></script>
 	<style>
 		body {
-			width: 50em;
+			__width: 50em;
 		}
 		
-		#canvas {
-			float: left;
-		}
 		.canvasTbl {
 			/* border-collapse: collapse; */
 			border: 1px black solid; 
+			touch-action: none;
 		}
 		.canvasTbl td {
 			width: 2em; 
 			height: 2em;
 			border: 1px black solid; 
 		}
-		.canvasTbl td.disabled {
-			border: 1px red dashed; 
-		}
-		.canvasTbl td.erased {
-			border: 1px black dotted; 
-		}
-		@keyframes borderBlink {
-			from {
-				border-color: black;
-			}
-			to {
-				border-color: white;
-			}
-		}
-		.canvasTbl td.propsEdit_active {
-			animation-duration: 1s;
-			animation-name: borderBlink;
-			animation-iteration-count: infinite;
-			animation-direction: alternate;
-		}
-		#canvas_colorChoose {
-			margin-bottom: 1em;
-		}
-		#canvas_activeColor {
-			width: 4em;
-			height: 4em;
-			border: 1px black solid;
-		}
 		
 		#canvas_colorPanel {
 			border: 2px black solid;
 			width: 5em;
 			float: right;
-			clear: right;
 			padding: 2px;
-		}
-		.canvas_dataInspect_wrap {
-			display: block;
-			float: left;
-			clear: both;
 		}
 		#canvas_dataInspect {
 			width: 100%;
-			min-width: 40em;
 			height: 25em;
 			padding: 2px;
 			margin: 3px;
 		}
-		#canvas_ctl {
-			float: right;
-			border: 1px black solid;
-			padding: 2px;
-		}
-		#canvas_ctl label {
-			display: block;
-			min-width: 0;
-		}
-		#canvas_propsEdit {
-			min-width: 40em;
-		}
-		#canvas_propsEdit_wrap {
-			float: left;
-			<!-- clear: right; -->
-			border: 1px black solid;
-			padding: 2px;
-			min-width: 0;
-		}
-		#canvas_propsEdit_submit {
-			display: block;
-		} 
-		#canvas_propsEdit {
-			width: 40em;
-			height: 10em;
-		}
 		#log {
-			border: 1px black dashed;
-			padding: 2px;
-			margin-top: 20em;
 			max-height: 10em;
 			overflow: scroll;
-			clear: both;
 		}
 	</style>
 </head>
 <body>
-	<div id=canvas>
-		<table class=canvasTbl>
-			<tr>
-				<td class=disabled><td class=erased>
-		</table>
-	</div>
-	<form id=canvas_ctl>
-		<label><input type=radio name=toolSelect value=pen checked>pen</label>
-		<label><input type=radio name=toolSelect value=erase>erase</label>
-		<label><input type=radio name=toolSelect value=floodFill>floodFill</label>
-		<label><input type=radio name=toolSelect value=propsEdit>propsEdit</label>
-	</form>
-	<div id=canvas_colorPanel>
-		<div id=canvas_colorChoose></div>
-		<div id=canvas_activeColor></div>
-	</div>
-	<div id=canvas_propsEdit_wrap>
-		<h3>Shift+Enter to send</h3>
-		<textarea id=canvas_propsEdit>
-{
-	"c": "#F00",
-	"meta": {
-		"id": "foo"
-	}
-}
-		</textarea>
-		<button id=canvas_propsEdit_submit>Submit</button>
-	</div>
+	<table id=canvas class=canvasTbl>
+		<tr><td style=background-color:#FF0000><td style=background-color:#00FF00><td style=background-color:#0000FF>
+		<tr><td style=background-color:#FF0000><td style=background-color:#FF0000><td style=background-color:#FF0000>
+	</table>
 	<div class=canvas_dataInspect_wrap>
 		<h3>Shift+Enter to send</h3>
 		<textarea id=canvas_dataInspect>
@@ -138,8 +47,8 @@
 	"width": 3,
 	"height": 2,
 	"pixels": [
-		{"id":"foo", "c":"disabled"}, {"id":"foo", "c":"#F00"}, {"id":"foo", "c":"#0F0"}, 
-		{"id":"foo", "c":"erased"}, {"id":"foo", "c":"disabled"}, {"id":"foo", "c":"#0F0"}
+		{"c":"#FF0000"}, {"c":"#FF0000"}, {"c":"#FF0000"}, 
+		{"c":"#FF0000"}, {"c":"#FF0000"}, {"c":"#FF0000"}
 	]
 }
 		</textarea>
